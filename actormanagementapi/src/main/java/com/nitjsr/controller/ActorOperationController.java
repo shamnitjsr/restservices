@@ -1,8 +1,11 @@
 package com.nitjsr.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,4 +35,18 @@ public class ActorOperationController {
 		}
 		
 	}
+	
+	@GetMapping("/findAll")
+	public ResponseEntity<?> fetchAllActor(){
+		try {
+			List<Actor> list = (List<Actor>) service.getAllActors();
+			return new ResponseEntity<List<Actor>>(list,HttpStatus.OK);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<String>("Problem in fetching Actor", HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+			
+		}
+		
 }
