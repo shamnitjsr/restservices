@@ -1,8 +1,6 @@
 package com.nitjsr.service;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,6 +30,8 @@ public class ActorMgmtServiceImpl implements IActorMgmtService {
 		return list1;
 	}
 
+	
+
 	/*
 	 * @Override public Iterable<Actor> getAllActors(){ Iterable<Actor>
 	 * it=actorRepo.findAll();
@@ -46,4 +46,12 @@ public class ActorMgmtServiceImpl implements IActorMgmtService {
 	 * t1.getActorname().compareTo(t2.getActorname())).collect(Collectors.toList());
 	 * return list1; }
 	 */
+	
+	@Override
+	public Actor getActorById(int id) {
+		//Actor actor=actorRepo.findById(id).get();
+		//return actor
+		return actorRepo.findById(id).orElseThrow(()-> new IllegalArgumentException());
+		
+	}
 }

@@ -6,5 +6,6 @@ public interface IActorMgmtService {
 	
 	String registerActor(Actor actor);
 	public Iterable<Actor> getAllActors();
+	public Actor getActorById(int id);
 
 }
