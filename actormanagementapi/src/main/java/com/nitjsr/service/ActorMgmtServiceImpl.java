@@ -30,8 +30,6 @@ public class ActorMgmtServiceImpl implements IActorMgmtService {
 		return list1;
 	}
 
-	
-
 	/*
 	 * @Override public Iterable<Actor> getAllActors(){ Iterable<Actor>
 	 * it=actorRepo.findAll();
@@ -46,12 +44,19 @@ public class ActorMgmtServiceImpl implements IActorMgmtService {
 	 * t1.getActorname().compareTo(t2.getActorname())).collect(Collectors.toList());
 	 * return list1; }
 	 */
-	
+
 	@Override
 	public Actor getActorById(int id) {
-		//Actor actor=actorRepo.findById(id).get();
-		//return actor
-		return actorRepo.findById(id).orElseThrow(()-> new IllegalArgumentException());
-		
+		// Actor actor=actorRepo.findById(id).get();
+		// return actor
+		return actorRepo.findById(id).orElseThrow(() -> new IllegalArgumentException());
+
+	}
+
+	@Override
+	public List<Actor> fetchActorsByCategory(String category1, String category2) {
+		List<Actor> list = actorRepo.getActorsByCategories(category1, category2);
+
+		return list;
 	}
 }

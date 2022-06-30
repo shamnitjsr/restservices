@@ -59,6 +59,21 @@ public class ActorOperationController {
 		}
 
 	}
+	
+	@GetMapping("/actorinfo/{category1}/{category2}")
+	public ResponseEntity<?> showActorsByCategories(@PathVariable String category1,@PathVariable String category2){
+		//use service
+		try {
+			List<Actor> list = service.fetchActorsByCategory(category1, category1);
+			return new ResponseEntity<List<Actor>>(list,HttpStatus.OK);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+			
+		}
+		
+	}
 
 
 }
