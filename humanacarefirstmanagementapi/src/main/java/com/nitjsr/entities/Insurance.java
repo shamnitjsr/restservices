@@ -1,10 +1,11 @@
 package com.nitjsr.entities;
 
-import lombok.AllArgsConstructor;
+import javax.persistence.Embeddable;
+
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
+@Embeddable
 public class Insurance {
 
 	private String providerName;
